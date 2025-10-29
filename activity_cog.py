@@ -8,11 +8,15 @@ class ActivityCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name='Roblox + '
-                                                                                                         'Minecraft + DND'))
+        await self.bot.change_presence(
+            activity=discord.Activity(
+                type=discord.ActivityType.playing, name="Roblox + " "Minecraft + DND"
+            )
+        )
 
     @commands.command()
     async def change_status(self, ctx: commands.Context, status: str):
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=status))
+        await self.bot.change_presence(
+            activity=discord.Activity(type=discord.ActivityType.playing, name=status)
+        )
         await ctx.send(f"Статус изменен на: `{status}`")
-
