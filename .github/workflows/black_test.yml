@@ -23,3 +23,9 @@ jobs:
 
       - name: Run black
         run: black --check .
+
+      - name: DiscordWH
+        uses: tsickert/discord-webhook@7.0.0
+        with:
+          webhook-url: ${{ secrets.WEBHOOK_URL}}
+          content: "Black прошел успешно"
