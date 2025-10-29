@@ -22,10 +22,12 @@ jobs:
         run: pip install black
 
       - name: Run black
+        id: run-black
+        continue-on-error: true
         run: black --check .
 
       - name: DiscordWH
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.WEBHOOK_URL}}
-          content: "Black прошел успешно"
+          content: ${{steps.run-black.outcome == 'success' && "Black прошел успешно" ||  "Black не прошел успешно"
