@@ -30,4 +30,4 @@ jobs:
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.WEBHOOK_URL}}
-          content: ${{steps.run-black.outcome == 'success' && "Black прошел успешно" ||  "Black не прошел успешно"
+          content: ${{steps.run-black.outcome == 'success' && "Black прошел успешно" ||  "Black не прошел успешно"}}
