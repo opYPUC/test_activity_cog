@@ -1,0 +1,25 @@
+name: Deploy on Kali
+
+on: [push, workflow_dispatch]
+
+jobs:
+  black_test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.12]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: SSH to Kali
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST}}
+          username: ${{ secrets.USERNAME_KALI}}
+          password: ${{ secrets.PASSWORD_KALI}}
+          port: ${{ secrets.PORT_SSH}}
+          script: |
+            pwd
+            mkdir abobus
