@@ -21,4 +21,4 @@ jobs:
           password: ${{ secrets.PASSWORD_KALI}}
           port: ${{ secrets.PORT_SSH}}
           script: |
-            sudo systemctl restart my_site.service
+            echo "${{ secrets.PASSWORD_KALI }}" | sudo -S systemctl restart my_site.service
