@@ -1,0 +1,24 @@
+name: Restart site
+
+on: [push, workflow_dispatch]
+
+jobs:
+  black_test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.12]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: SSH to Kali and restart my_site
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST}}
+          username: ${{ secrets.USERNAME_KALI}}
+          password: ${{ secrets.PASSWORD_KALI}}
+          port: ${{ secrets.PORT_SSH}}
+          script: |
+            sudo systemctl restart my_site.service
