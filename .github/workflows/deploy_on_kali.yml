@@ -21,5 +21,6 @@ jobs:
           password: ${{ secrets.PASSWORD_KALI}}
           port: ${{ secrets.PORT_SSH}}
           script: |
+            cd Desktop
             pwd
             mkdir abobus
